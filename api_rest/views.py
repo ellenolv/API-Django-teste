@@ -114,3 +114,23 @@ def user_manager(request): #cria função de gerenciamento
         
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
+
+# DELETAR DADOS (DELETE)
+
+    if request.method == 'DELETE':
+
+        try:
+            user_to_delete = User.objects.get(pk=request.data['user_nickname'])
+            user_to_delete.delete()
+            return Response(status=status.HTTP_202_ACCEPTED)
+        except:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+
+
+
+
+
+
+
+
+
